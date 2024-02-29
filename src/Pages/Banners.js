@@ -236,7 +236,7 @@ const Banners = () => {
                 <tbody className="mt-4">
                   {data?.Data?.map((item) => (
                     <tr key={item._id}>
-                      <td className="w-[100px] text-center p-4">
+                      <td className="w-[100px] text-center p-4">it remote set-url origin https://github.com/USERNAME/REPOSITORY.git
                         <img src={item.image} alt="" />
                       </td>
                       <td className="w-[100px]  text-center p-4">
