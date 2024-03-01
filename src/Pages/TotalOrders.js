@@ -7,10 +7,10 @@ const TotalOrders = () => {
   return (
     <div className="shadow-2xl rounded">
       <div className="flex justify-between items-center pt-5 ml-10 mr-10">
-        <div className="text-2xl mb-5 text-[#525252]">
+        <div className="text-2xl mb-5 text-black font-semibold">
           Total Orders
           <br />
-          <span className="text-[15px]">
+          <span className="text-[15px] text-[#525252]">
             View total service/ Shopping orders
           </span>
         </div>

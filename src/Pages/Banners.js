@@ -74,10 +74,10 @@ const Banners = () => {
         <>
           <div className="shadow-2xl rounded h-[700px]">
             <div className="flex  justify-between items-center pt-5 ml-10 mr-10">
-              <div className="text-2xl mb-5 text-[#525252]">
+              <div className="text-2xl mb-5  text-black font-semibold">
                 Banners
                 <br />
-                <span className="text-[15px]">
+                <span className="text-[15px] text-[#525252]">
                   View, edit or add new product to your app
                 </span>
               </div>
@@ -184,10 +184,10 @@ const Banners = () => {
         <>
           <div className="shadow-2xl rounded h-[1000px]">
             <div className="flex  justify-between items-center pt-5 ml-10 mr-10">
-              <div className="text-2xl mb-5 text-[#525252]">
+              <div className="text-2xl mb-5 font-semibold text-black">
                 Banners
                 <br />
-                <span className="text-[15px]">
+                <span className="text-[15px] text-[#525252]">
                   View, edit or add new product to your app
                 </span>
               </div>

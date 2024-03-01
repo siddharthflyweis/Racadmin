@@ -9,10 +9,10 @@ const TodoList = () => {
         <>
           <div className="shadow-2xl rounded h-[500px]">
             <div className="flex  justify-between items-center pt-5 ml-10 mr-10">
-              <div className="text-2xl mb-5 text-[#525252]">
+              <div className="text-2xl mb-5 text-black font-semibold" >
                 To-do List
                 <br />
-                <span className="text-[15px]">
+                <span className="text-[15px] text-[#525252]">
                   View, edit or add new to do to your app
                 </span>
               </div>
@@ -72,10 +72,10 @@ const TodoList = () => {
         <>
           <div className="shadow-2xl rounded h-[600px]">
             <div className="flex  justify-between items-center pt-5 ml-10 mr-10">
-              <div className="text-2xl mb-5 text-[#525252]">
+              <div className="text-2xl mb-5  font-semibold text-black">
                 To-do List
                 <br />
-                <span className="text-[15px]">
+                <span className="text-[15px] text-[#525252]">
                   View, edit or add new to do to your app
                 </span>
               </div>

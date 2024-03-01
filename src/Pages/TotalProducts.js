@@ -175,10 +175,10 @@ const TotalProducts = () => {
         <>
           <div className="shadow-2xl rounded">
             <div className="flex  justify-between items-center pt-5 ml-10 mr-10">
-              <div className="text-2xl mb-5 text-[#525252]">
+              <div className="text-2xl mb-5 text-[black] font-semibold">
                 Total Products
                 <br />
-                <span className="text-[15px]">
+                <span className="text-[15px] text-[#525252]">
                   View & edit User List of app..
                 </span>
               </div>
@@ -234,13 +234,13 @@ const TotalProducts = () => {
                   <thead>
                     <tr>
                       <th className="w-[200px] text-[#6D6D6D]">Product</th>
-                      <th className="text-center text-[#6D6D6D] w-[300px]">
+                      <th className="text-center text-[#6D6D6D] w-[150px]">
                         Brand
                       </th>
-                      <th className="w-[300px] text-center text-[#6D6D6D]">
+                      <th className="w-[150px] text-center text-[#6D6D6D]">
                         Capacity
                       </th>
-                      <th className=" w-[150px] text-left text-[#6D6D6D]">
+                      <th className=" w-[150px] text-center text-[#6D6D6D]">
                         Features
                       </th>
                       <th className="w-[150px] text-center text-[#6D6D6D]">
@@ -257,15 +257,16 @@ const TotalProducts = () => {
                   <tbody>
                     <tr className="bg-[#F5F9FF]">
                       <td className="text-center p-5">LG AIR Conditioner</td>
-                      <td className="w-[200px] text-center">LG</td>
-                      <td className="w-[200px] text-center">lerem iprum</td>
-                      <td className="w-[150px] text-center">lerem iprum</td>
-                      <td className="w-[50px] text-center">45</td>
-                      <td className="w-[50px] text-center">Rs.65000</td>
-                      <td className="w-[50px] text-center text-[#094DB3]">
+                      <td className="text-center">LG</td>
+                      <td className="text-center">lerem iprum</td>
+                      <td className=" text-center">lerem iprum</td>
+                      <td className="text-center">45</td>
+                      <td className="text-center">Rs.65000</td>
+                      <td className="text-center text-[#094DB3]">
                         Rs.65000
                       </td>
                     </tr>
+                    
                   </tbody>
                 </table>
               </>
@@ -276,13 +277,13 @@ const TotalProducts = () => {
                   <thead>
                     <tr>
                       <th className="w-[200px] text-[#6D6D6D]">Product</th>
-                      <th className="text-center text-[#6D6D6D] w-[300px]">
+                      <th className="text-center text-[#6D6D6D] w-[150px]">
                         Brand
                       </th>
-                      <th className="w-[300px] text-center text-[#6D6D6D]">
+                      <th className="w-[150px] text-center text-[#6D6D6D]">
                         Capacity
                       </th>
-                      <th className=" w-[150px] text-left text-[#6D6D6D]">
+                      <th className=" w-[150px] text-center text-[#6D6D6D]">
                         Features
                       </th>
                       <th className="w-[150px] text-center text-[#6D6D6D]">
@@ -299,12 +300,12 @@ const TotalProducts = () => {
                   <tbody>
                     <tr className="bg-[#F5F9FF]">
                       <td className="text-center p-5">LG AIR Conditioner</td>
-                      <td className="w-[200px] text-center">LG</td>
-                      <td className="w-[200px] text-center">lerem iprum</td>
-                      <td className="w-[150px] text-center">lerem iprum</td>
-                      <td className="w-[50px] text-center">45</td>
-                      <td className="w-[50px] text-center">Rs.65000</td>
-                      <td className="w-[50px] text-center text-[#094DB3]">
+                      <td className=" text-center">LG</td>
+                      <td className="text-center">lerem iprum</td>
+                      <td className=" text-center">lerem iprum</td>
+                      <td className=" text-center">45</td>
+                      <td className="text-center">Rs.65000</td>
+                      <td className=" text-center text-[#094DB3]">
                         Rs.65000
                       </td>
                     </tr>

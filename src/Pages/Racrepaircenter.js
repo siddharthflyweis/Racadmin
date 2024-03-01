@@ -13,10 +13,10 @@ const Racrepaircenter = () => {
           {" "}
           <div className="shadow-2xl rounded h-[800px]">
             <div className="flex  justify-between items-center pt-5 ml-10 mr-10">
-              <div className="text-2xl mb-5 text-[#525252]">
+              <div className="text-2xl mb-5  text-black font-semibold">
                 Rac Repair Center
                 <br />
-                <span className="text-[15px]">
+                <span className="text-[15px] text-[#525252]">
                   Edit , Delete or push notification
                 </span>
               </div>
@@ -186,10 +186,10 @@ const Racrepaircenter = () => {
           {" "}
           <div className="shadow-2xl rounded h-[600px]">
             <div className="flex  justify-between items-center pt-5 ml-10 mr-10">
-              <div className="text-2xl mb-5 text-[#525252]">
+              <div className="text-2xl mb-5 text-black font-semibold">
                 Rac Repair Center
                 <br />
-                <span className="text-[15px]">
+                <span className="text-[15px] text-[#525252]">
                   Edit , Delete or push notification
                 </span>
               </div>
@@ -209,35 +209,35 @@ const Racrepaircenter = () => {
               <table className="w-full">
                 <thead>
                   <tr>
-                    <th className="py-3 px-6"></th>
-                    <th className="text-left text-[#6D6D6D] w-[300px]">
+                    <th className="py-3 px-6 "></th>
+                    <th className="text-left text-[#6D6D6D] w-[300px] p-2">
                       Partner name
                     </th>
-                    <th className="w-[300px] text-left text-[#6D6D6D]">
+                    <th className="w-[300px] text-left text-[#6D6D6D] p-2">
                       Service Offer
                     </th>
-                    <th className=" w-[150px] text-left text-[#6D6D6D]">
+                    <th className=" w-[150px] text-left text-[#6D6D6D] p-2">
                       Phone no.
                     </th>
-                    <th className="w-[200px] text-center text-[#6D6D6D]">
+                    <th className="w-[200px] text-center text-[#6D6D6D] p-2">
                       Total Services Provided
                     </th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr className="shadow-lg">
-                    <td className="text-center">
+                    <td className="text-center p-2">
                       <span className="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
                         New
                       </span>
                     </td>
-                    <td className="w-[200px] flex items-center">
+                    <td className="w-[200px] flex items-center p-2">
                       <img src={userprofiles} alt="" />
                       siddharth
                     </td>
-                    <td className="w-[300px]">AC Repair,ELECTRICIAN</td>
-                    <td className="w-[150px] text-left">299999999</td>
-                    <td className="w-[50px] text-center">29</td>
+                    <td className="w-[300px] p-2">AC Repair,ELECTRICIAN</td>
+                    <td className="w-[150px] text-left p-2">299999999</td>
+                    <td className="w-[50px] text-center p-2">29</td>
 
                     <td className="w-[50px]">
                       <img src={dwld} alt="" />
@@ -249,31 +249,7 @@ const Racrepaircenter = () => {
                       <img src={editbtn} alt="" />
                     </td>
                   </tr>
-                  <hr />
-                  <tr className="shadow-lg">
-                    <td className="text-center">
-                      <span className="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
-                        New
-                      </span>
-                    </td>
-                    <td className="w-[200px] flex items-center">
-                      <img src={userprofiles} alt="" />
-                      siddharth
-                    </td>
-                    <td className="w-[300px]">AC Repair,ELECTRICIAN</td>
-                    <td className="w-[150px] text-left">299999999</td>
-                    <td className="w-[50px] text-center">29</td>
-
-                    <td className="w-[50px]">
-                      <img src={dwld} alt="" />
-                    </td>
-                    <td className="w-[50px]">
-                      <img src={deletebtn} alt="" />
-                    </td>
-                    <td className="w-[50px]">
-                      <img src={editbtn} alt="" />
-                    </td>
-                  </tr>
+                  
                 </tbody>
               </table>
             </div>

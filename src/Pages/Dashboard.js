@@ -32,7 +32,7 @@ const Dashboard = () => {
   return (
     <>
       <div className="shadow-2xl p-10 rounded">
-        <div className="text-2xl mb-5 text-[#525252]">Dashboard</div>
+        <div className="text-2xl mb-5 text-black font-semibold">Dashboard</div>
         <hr />
 
         <div className="grid grid-row-2 gap-5">

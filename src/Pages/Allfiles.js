@@ -11,10 +11,10 @@ const Allfiles = () => {
         <>
           <div className="shadow-2xl rounded h-[700px]">
             <div className="flex  justify-between items-center pt-5 ml-10 mr-10">
-              <div className="text-2xl mb-5 text-[#525252]">
-                AllFiles
+              <div className="text-2xl mb-5 text-[black] font-semibold">
+                Upload Files
                 <br />
-                <span className="text-[15px]">Upload and view files</span>
+                <span className="text-[15px] text-[#525252]">Upload and view files</span>
               </div>
               <div>
                 <button
@@ -112,10 +112,10 @@ const Allfiles = () => {
         <>
           <div className="shadow-2xl rounded h-[600px]">
             <div className="flex  justify-between items-center pt-5 ml-10 mr-10">
-              <div className="text-2xl mb-5 text-[#525252]">
-                AllFiles
+              <div className="text-2xl mb-5  text-[black] font-semibold" >
+                Upload Files
                 <br />
-                <span className="text-[15px]">Upload and view files</span>
+                <span className="text-[15px] text-[#525252]">Upload and view files</span>
               </div>
               <div>
                 <button

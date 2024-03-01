@@ -6,7 +6,7 @@ const Permissions = () => {
   return (
     <div className="shadow-2xl rounded h-[600px]">
       <div className="flex  justify-between items-center pt-5 ml-10 mr-10">
-        <div className="text-2xl mb-5 text-[#525252]">Rolls & Permissions</div>
+        <div className="text-2xl font-semibold mb-5 text-[black]">Rolls & Permissions</div>
 
         <div className="relative mt-2 rounded-md">
           <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">

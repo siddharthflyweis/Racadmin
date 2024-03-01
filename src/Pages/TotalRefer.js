@@ -11,10 +11,12 @@ const TotalRefer = () => {
         <>
           <div className="shadow-2xl rounded h-[750px]">
             <div className="flex  justify-between items-center pt-5 ml-10 mr-10">
-              <div className="text-2xl mb-5 text-[#525252]">
+              <div className="text-2xl mb-5 text-black font-semibold">
                 Total Refers/Coupons
                 <br />
-                <span className="text-[15px]">Refer Details</span>
+                <span className="text-[15px] text-[#525252]">
+                  Refer Details
+                </span>
               </div>
               <div className="flex justify-center items-center gap-5">
                 <button
@@ -75,23 +77,31 @@ const TotalRefer = () => {
               <div className="flex flex-col gap-2">
                 <span>Free Delivery</span>
                 <div className="flex gap-2">
-                  <button className="bg-[#0B50B3] p-2 pl-5 pr-5 rounded text-white flex justify-center items-center gap-2">Yes</button>
-                  <button className="bg-[grey] p-2 pl-5 pr-5 rounded text-white flex justify-center items-center gap-2">No</button>
+                  <button className="bg-[#0B50B3] p-2 pl-5 pr-5 rounded text-white flex justify-center items-center gap-2">
+                    Yes
+                  </button>
+                  <button className="bg-[grey] p-2 pl-5 pr-5 rounded text-white flex justify-center items-center gap-2">
+                    No
+                  </button>
                 </div>
               </div>
               <div className="flex flex-col gap-2">
                 <span>Actions</span>
                 <div className="flex gap-2">
-                  <button className="bg-[#0B50B3] p-2 pl-5 pr-5 rounded text-white flex justify-center items-center gap-2">Edit Coupon</button>
-                  <button className="bg-[red] p-2 pl-5 pr-5 rounded text-white flex justify-center items-center gap-2">Delete Coupon</button>
+                  <button className="bg-[#0B50B3] p-2 pl-5 pr-5 rounded text-white flex justify-center items-center gap-2">
+                    Edit Coupon
+                  </button>
+                  <button className="bg-[red] p-2 pl-5 pr-5 rounded text-white flex justify-center items-center gap-2">
+                    Delete Coupon
+                  </button>
                 </div>
               </div>
             </div>
             <div className="flex justify-end gap-5 mr-5">
-              <button className="text-[#0B50B3] p-2 pl-5 pr-5 rounded bg-white border border-[#0B50B3]">
+              <button className="text-[#0B50B3] h-[40px] w-[100px] rounded bg-white border border-[#0B50B3]">
                 Cancel
               </button>
-              <button className="bg-[#0B50B3] p-2 pl-5 pr-5 rounded text-white flex justify-center items-center gap-2">
+              <button className="bg-[#0B50B3] h-[40px] w-[130px] rounded text-white flex justify-center items-center gap-2">
                 Save Changes
               </button>
             </div>
@@ -101,10 +111,12 @@ const TotalRefer = () => {
         <>
           <div className="shadow-2xl rounded">
             <div className="flex  justify-between items-center pt-5 ml-10 mr-10">
-              <div className="text-2xl mb-5 text-[#525252]">
+              <div className="text-2xl mb-5 text-black font-semibold">
                 Total Refers/Coupons
                 <br />
-                <span className="text-[15px]">Refer Details</span>
+                <span className="text-[15px] text-[#525252]">
+                  Refer Details
+                </span>
               </div>
               <div className="flex justify-center items-center gap-5">
                 <div className="relative mt-2 rounded-md">
@@ -154,11 +166,60 @@ const TotalRefer = () => {
                 <table className="w-full">
                   <thead>
                     <tr>
-                      <th className="w-[200px] text-[#6D6D6D]">Refer ID</th>
-                      <th className="text-center text-[#6D6D6D] w-[300px]">
+                      <th className="w-[200px] text-[#6D6D6D]">Coupon ID</th>
+                      <th className="text-center text-[#6D6D6D] w-[150px]">
+                        Name
+                      </th>
+                      <th className="w-[150px] text-center text-[#6D6D6D]">
+                        Description
+                      </th>
+                      <th className=" w-[150px] text-center text-[#6D6D6D]">
+                        Discount
+                      </th>
+
+                      <th className="w-[150px] text-center text-[#6D6D6D]">
+                        Free Delivery
+                      </th>
+
+                      <th className="w-[200px] text-center text-[#6D6D6D]">
+                        Redemtion Before
+                      </th>
+                      <th className="w-[150px] text-center text-[#6D6D6D]">
+                        Created on
+                      </th>
+                      <th className="w-[150px] text-center text-[#6D6D6D]">
+                        Status
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="">
+                      <td className="text-center p-5">#RAC-039292</td>
+                      <td className=" text-center">Lorem impum</td>
+                      <td className="text-center">Lorem impum</td>
+                      <td className="text-center">Lorem impum</td>
+                      <td className="text-center">yes</td>
+                      <td className="text-center">2nd Feb 2023</td>
+                      <td className="text-center">2nd Feb 2023</td>
+
+                      <td className="w-[50px] text-center text-[#094DB3]">
+                        Done
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </>
+            ) : (
+              <>
+                {" "}
+                <table className="w-full">
+                  <thead>
+                    <tr>
+                      <th className="w-[150px] text-[#6D6D6D]">Refer ID</th>
+                      <th className="text-center text-[#6D6D6D] w-[150px]">
                         Refer To
                       </th>
-                      <th className="w-[300px] text-center text-[#6D6D6D]">
+                      <th className="w-[150px] text-center text-[#6D6D6D]">
                         Refer By
                       </th>
                       <th className=" w-[150px] text-center text-[#6D6D6D]">
@@ -177,55 +238,12 @@ const TotalRefer = () => {
                   <tbody>
                     <tr className="">
                       <td className="text-center p-5">#RAC-039292</td>
-                      <td className="w-[200px] text-center">Lorem impum</td>
-                      <td className="w-[200px] text-center">Lorem impum</td>
-                      <td className="w-[150px] text-center">30 Rac Points</td>
-                      <td className="w-[50px] text-center">2nd Feb 2023</td>
+                      <td className=" text-center">Lorem impum</td>
+                      <td className=" text-center">Lorem impum</td>
+                      <td className="text-center">30 Rac Points</td>
+                      <td className="text-center">2nd Feb 2023</td>
 
-                      <td className="w-[50px] text-center text-[#094DB3]">
-                        Received
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </>
-            ) : (
-              <>
-                {" "}
-                <table className="w-full">
-                  <thead>
-                    <tr>
-                      <th className="w-[200px] text-[#6D6D6D]">Refer ID</th>
-                      <th className="text-center text-[#6D6D6D] w-[300px]">
-                        Refer To
-                      </th>
-                      <th className="w-[300px] text-center text-[#6D6D6D]">
-                        Refer By
-                      </th>
-                      <th className=" w-[150px] text-left text-[#6D6D6D]">
-                        Refer Points
-                      </th>
-
-                      <th className="w-[150px] text-center text-[#6D6D6D]">
-                        Date
-                      </th>
-
-                      <th className="w-[150px] text-center text-[#6D6D6D]">
-                        Status
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr className="">
-                      <td className="text-center p-5">#RAC-039292</td>
-                      <td className="w-[200px] text-center">Lorem impum</td>
-                      <td className="w-[200px] text-center">Lorem impum</td>
-                      <td className="w-[150px] text-center">30 Rac Points</td>
-                      <td className="w-[50px] text-center">2nd Feb 2023</td>
-
-                      <td className="w-[50px] text-center text-[#094DB3]">
-                        Received
-                      </td>
+                      <td className="text-center text-[#094DB3]">Received</td>
                     </tr>
                   </tbody>
                 </table>

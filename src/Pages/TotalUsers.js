@@ -10,24 +10,29 @@ import btn from "../Assests/deletebtn.svg";
 
 const TotalUsers = () => {
   const [adduser, setAdduser] = useState(false);
+  const [count, setCount] = useState(0);
+
+  const increment = () => {
+    setCount(count + 1);
+  };
+
+  const decrement = () => {
+    if (count > 0) {
+      setCount(count - 1);
+    }
+  };
   return (
     <>
       {adduser ? (
         <>
-          <div className="shadow-2xl rounded h-[750px]">
+          <div className="shadow-2xl rounded h-[820px]">
             <div className="flex  justify-between items-center pt-5 ml-10 mr-10">
-              <div className="text-2xl mb-5 text-[#525252]">
+              <div className="text-2xl mb-5 text-black font-semibold">
                 User Profile
                 <br />
-                <span className="text-[15px]">View ,edit User Information</span>
-              </div>
-              <div>
-                <button
-                  className="text-[#0B50B3] p-2 pl-5 pr-5 rounded-3xl bg-white border border-[#0B50B3]"
-                  onClick={() => setAdduser(false)}
-                >
-                  Go Back
-                </button>
+                <span className="text-[15px] text-[#525252]">
+                  View ,edit User Information
+                </span>
               </div>
             </div>
             <hr />
@@ -49,7 +54,7 @@ const TotalUsers = () => {
                 <img src={btn} alt="" />
               </div>
             </div>
-            <div className="flex justify-around">
+            <div className="flex flex-wrap gap-10 ml-5 mr-5">
               <div>
                 <label>First Name</label>
                 <br />
@@ -85,8 +90,6 @@ const TotalUsers = () => {
                   className="placeholder: block w-[250px] rounded-md border-0 py-1.5 pl-2 pr-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
-            </div>
-            <div className="flex justify-around mt-10">
               <div>
                 <label>First Line Address</label>
                 <br />
@@ -122,8 +125,6 @@ const TotalUsers = () => {
                   className="placeholder: block w-[250px] rounded-md border-0 py-1.5 pl-2 pr-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
-            </div>
-            <div className="flex justify-around mt-10">
               <div>
                 <label>District</label>
                 <br />
@@ -158,7 +159,24 @@ const TotalUsers = () => {
                   className="placeholder: block w-[250px] rounded-md border-0 py-1.5 pl-2 pr-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
+              <div>
+                <label> Adaahar card No.</label>
+                <br />
+                <input
+                  placeholder="Adaahar card No."
+                  className="placeholder: block w-[250px] rounded-md border-0 py-1.5 pl-2 pr-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+              <div>
+                <label> Adaahar card No.</label>
+                <br />
+                <input
+                  placeholder="Adaahar card No."
+                  className="placeholder: block w-[250px] rounded-md border-0 py-1.5 pl-2 pr-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
             </div>
+
             <div className="mt-5">
               <span className="m-10">Save As</span>
               <div className="flex gap-5 ml-5">
@@ -174,13 +192,39 @@ const TotalUsers = () => {
               </div>
             </div>
 
-            <div className="flex justify-end gap-5 mr-5">
-              <button className="text-[#0B50B3] p-2 pl-5 pr-5 rounded bg-white border border-[#0B50B3]">
-                Cancel
-              </button>
-              <button className="bg-[#0B50B3] p-2 pl-5 pr-5 rounded text-white flex justify-center items-center gap-2">
-                Save Changes
-              </button>
+            <div className="flex justify-between mt-10 mr-5 ml-5">
+              <div>
+                <span className="font-semibold">Provided Discount</span>
+                <div className="flex  items-center justify-center gap-2">
+                  <button
+                    className="text-[#094DB3] bg-[#EEF4FF]  rounded-full h-[20px] w-[20px] flex items-center justify-center "
+                    onClick={decrement}
+                  >
+                    -
+                  </button>
+                  <span className="bg-[#0B50B3] p-2 pl-5 pr-5 rounded-2xl text-white flex justify-center items-center gap-2">
+                    {count}
+                  </span>
+
+                  <button
+                    className="text-[#094DB3] bg-[#EEF4FF]  rounded-full h-[20px] w-[20px] flex items-center justify-center "
+                    onClick={increment}
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+              <div className="flex gap-5">
+                <button
+                  className="text-[#0B50B3] h-[40px] w-[100px] rounded bg-white border border-[#0B50B3]"
+                  onClick={() => setAdduser(false)}
+                >
+                  Cancel
+                </button>
+                <button className="bg-[#0B50B3]  h-[40px] w-[130px] rounded text-white flex justify-center items-center gap-2">
+                  Save Changes
+                </button>
+              </div>
             </div>
           </div>
         </>
@@ -189,10 +233,10 @@ const TotalUsers = () => {
           {" "}
           <div className="shadow-2xl rounded">
             <div className="flex  justify-between items-center pt-5 ml-10 mr-10">
-              <div className="text-2xl mb-5 text-[#525252]">
+              <div className="text-2xl mb-5  text-black font-semibold">
                 Total Users
                 <br />
-                <span className="text-[15px]">
+                <span className="text-[15px] text-[#525252]">
                   View & edit User List of app..
                 </span>
               </div>
@@ -228,41 +272,41 @@ const TotalUsers = () => {
               <thead>
                 <tr>
                   <th className="py-3 px-6"></th>
-                  <th className="text-left text-[#6D6D6D] w-[300px]">
+                  <th className="text-left text-[#6D6D6D] w-[300px] p-2">
                     User name
                   </th>
-                  <th className="w-[300px] text-left text-[#6D6D6D]">Email</th>
-                  <th className="w-[150px] text-left text-[#6D6D6D]">
+                  <th className="w-[300px] text-left text-[#6D6D6D] p-2">
+                    Email
+                  </th>
+                  <th className="w-[150px] text-left text-[#6D6D6D] p-2">
                     Phone no.
                   </th>
-                  <th className="w-[150px] text-center text-[#6D6D6D]">
+                  <th className="w-[150px] text-center text-[#6D6D6D] p-2">
                     Service Added
                   </th>
                 </tr>
               </thead>
               <tbody className="mt-4">
                 <tr className="shadow-lg">
-                  <td className="text-center">
+                  <td className="text-center p-3">
                     <span className="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
                       New
                     </span>
                   </td>
-                  <td className="w-[200px] flex items-center">
+                  <td className="flex items-center p-3">
                     <img src={userprofiles} alt="" />
                     siddharth
                   </td>
-                  <td className="w-[300px] text-left">
-                    siddhartharay47@gmail.com
-                  </td>
-                  <td className="w-[150px] text-left ">299999999</td>
-                  <td className="w-[50px] text-center">29</td>
-                  <td className="w-[50px] ml-2">
+                  <td className=" text-left p-3">siddhartharay47@gmail.com</td>
+                  <td className=" text-left p-3">299999999</td>
+                  <td className=" text-center p-3">29</td>
+                  <td className="p-3">
                     <img src={userpro} alt="" />
                   </td>
-                  <td className="w-[50px] ">
+                  <td className=" ">
                     <img src={deletebtn} alt="" />
                   </td>
-                  <td className="w-[50px]">
+                  <td className="">
                     <img src={editbtn} alt="" />
                   </td>
                 </tr>
