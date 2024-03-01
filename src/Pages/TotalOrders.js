@@ -1,9 +1,31 @@
-import React, { useState } from "react";
-
+import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
-
+import axios from "axios";
+import { Baseurl } from "../Utils/apiService";
 const TotalOrders = () => {
   const [Visible, setVisible] = useState(false);
+  const [data, setData] = useState([]);
+  const token =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzNkNDg4Y2M1NWNjN2I5ZWY4ZDVmYiIsImlhdCI6MTcwOTIxMjc1NSwiZXhwIjoxNzA5NDcxOTU1fQ.IdBuysqP_L_agOyWWom2PYzSyO5ZgJmFuO_crZhymYk";
+
+  function fetchOrders() {
+    axios
+      .get(`${Baseurl}/api/v1/cartAndOrder/api/v1/order/Orders`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        setData(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }
+  useEffect(() => {
+    fetchOrders();
+  }, []);
   return (
     <div className="shadow-2xl rounded">
       <div className="flex justify-between items-center pt-5 ml-10 mr-10">
@@ -31,13 +53,26 @@ const TotalOrders = () => {
       </div>
       <hr />
       <div className="flex gap-4 mt-5 mb-5 ml-10">
-        <span onClick={() => setVisible(false)}  className={`cursor-pointer ${!Visible && 'underline text-[#165DB2] underline-offset-8'}`}>Service Order</span>
-        <span onClick={() => setVisible(true)}      className={`cursor-pointer ${Visible && 'underline text-[#165DB2] underline-offset-8'}`}>Shopping Order</span>
+        <span
+          onClick={() => setVisible(false)}
+          className={`cursor-pointer ${
+            !Visible && "underline text-[#165DB2] underline-offset-8"
+          }`}
+        >
+          Service Order
+        </span>
+        <span
+          onClick={() => setVisible(true)}
+          className={`cursor-pointer ${
+            Visible && "underline text-[#165DB2] underline-offset-8"
+          }`}
+        >
+          Shopping Order
+        </span>
       </div>
       <hr />
       {Visible ? (
         <>
-       
           <table className="w-full">
             <thead>
               <tr>
@@ -115,29 +150,31 @@ const TotalOrders = () => {
               </tr>
             </thead>
             <tbody>
-              <tr className="bg-[#F5F9FF]">
-                <td className="text-center">#RAC-039292</td>
-                <td className="w-[200px] text-center">AC Repair Service</td>
-                <td className="w-[200px] text-center">
-                  45, Noida Sector <br />
-                  55, Noida, UP
-                </td>
-                <td className="w-[150px] text-center">
-                  2nd Feb 2023
-                  <br />
-                  <span className="text-[#094DB3]">10:30 am</span>
-                </td>
-                <td className="w-[50px] text-center">
-                  2nd Feb 2023
-                  <br />
-                  <span className="text-[#094DB3]">10:30 am</span>
-                </td>
-                <td className="w-[50px] text-center">Rs.650</td>
-                <td className="w-[50px] text-center">Loreum Ipsum</td>
-                <td className="w-[50px] text-center text-[#094DB3]">
-                  Confirmed
-                </td>
-              </tr>
+              {data?.data?.map((order) => {
+                <tr className="bg-[#F5F9FF]" key={order._id}>
+                  <td className="text-center">{order.categoryId}</td>
+                  <td className="w-[200px] text-center">AC Repair Service</td>
+                  <td className="w-[200px] text-center">
+                    45, Noida Sector <br />
+                    55, Noida, UP
+                  </td>
+                  <td className="w-[150px] text-center">
+                    2nd Feb 2023
+                    <br />
+                    <span className="text-[#094DB3]">10:30 am</span>
+                  </td>
+                  <td className="w-[50px] text-center">
+                    2nd Feb 2023
+                    <br />
+                    <span className="text-[#094DB3]">10:30 am</span>
+                  </td>
+                  <td className="w-[50px] text-center">Rs.650</td>
+                  <td className="w-[50px] text-center">Loreum Ipsum</td>
+                  <td className="w-[50px] text-center text-[#094DB3]">
+                    Confirmed
+                  </td>
+                </tr>;
+              })}
             </tbody>
           </table>
         </>
