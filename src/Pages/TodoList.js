@@ -9,7 +9,7 @@ const TodoList = () => {
         <>
           <div className="shadow-2xl rounded h-[500px]">
             <div className="flex  justify-between items-center pt-5 ml-10 mr-10">
-              <div className="text-2xl mb-5 text-black font-semibold" >
+              <div className="text-2xl mb-5 text-black font-semibold">
                 To-do List
                 <br />
                 <span className="text-[15px] text-[#525252]">
@@ -106,7 +106,7 @@ const TodoList = () => {
             <hr />
             <div className="flex justify-between  items-center m-5 h-[70px]">
               <div className="flex gap-2">
-                <img src={userprofiles}  alt=""/>
+                <img src={userprofiles} alt="" />
                 <div>
                   <span>John Doe 12:33 pm. 13 Nov, 2023</span>
                   <div className="w-[650px] mt-1">

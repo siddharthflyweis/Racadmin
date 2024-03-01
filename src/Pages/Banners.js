@@ -1,27 +1,27 @@
 import { useState, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
-
-import axios from "axios"
+import axios from "axios";
 import deletebtn from "../Assests/deletebtn.svg";
 import editbtn from "../Assests/editbtn.svg";
 import bellicon from "../Assests/bellicon.svg";
 import upload from "../Assests/upload.svg";
-import { getBanner } from "../Utils/apiService";
 import { useNavigate } from "react-router-dom";
 import { Baseurl } from "../Utils/apiService";
 
 const Banners = () => {
   const [addbanner, setAddbanner] = useState(false);
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
 
-  async function fetchbanner() {
-    try {
-      const result = await getBanner();
-      setData(result);
-      console.log(result);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
+  function fetchbanner() {
+    axios
+      .get(`${Baseurl}/api/v1/images`)
+      .then((response) => {
+        setData(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
   }
 
   useEffect(() => {
@@ -35,8 +35,6 @@ const Banners = () => {
     image: "",
     Content: "",
   });
-
-
 
   const navigate = useNavigate();
   function handlesubmit(event) {
@@ -55,7 +53,7 @@ const Banners = () => {
     const confirm = window.confirm("do you want to delete ?");
     if (confirm) {
       axios
-        .delete(`${Baseurl}api/v1/images/${_id}`)
+        .delete(`${Baseurl}/api/v1/images/${_id}`)
         .then((res) => {
           alert("record had deleted");
           window.location.reload();
@@ -236,7 +234,7 @@ const Banners = () => {
                 <tbody className="mt-4">
                   {data?.Data?.map((item) => (
                     <tr key={item._id}>
-                      <td className="w-[100px] text-center p-4">it remote set-url origin https://github.com/USERNAME/REPOSITORY.git
+                      <td className="w-[100px] text-center p-4">
                         <img src={item.image} alt="" />
                       </td>
                       <td className="w-[100px]  text-center p-4">

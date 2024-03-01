@@ -7,6 +7,9 @@ import deletebtn from "../Assests/deletebtn.svg";
 import editbtn from "../Assests/editbtn.svg";
 import useprofile from "../Assests/userprofiles.svg";
 import btn from "../Assests/deletebtn.svg";
+import home from "../Assests/Home.svg";
+import work from "../Assests/work.svg";
+import other from "../Assests/other.svg";
 
 const TotalUsers = () => {
   const [adduser, setAdduser] = useState(false);
@@ -91,6 +94,24 @@ const TotalUsers = () => {
                 />
               </div>
               <div>
+                <label>Alternate Phone Number</label>
+                <br />
+                <input
+                  placeholder="Alternate Phone Number"
+                  className="placeholder: block w-[250px] rounded-md border-0 py-1.5 pl-2 pr-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+              <div>
+                {" "}
+                <label>Phone Number</label>
+                <br />
+                <input
+                  placeholder="Phone Number"
+                  className="placeholder: block w-[250px] rounded-md border-0 py-1.5 pl-2 pr-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+
+              <div>
                 <label>First Line Address</label>
                 <br />
                 <input
@@ -99,29 +120,10 @@ const TotalUsers = () => {
                 />
               </div>
               <div>
-                {" "}
                 <label>Second Line Address</label>
                 <br />
                 <input
                   placeholder="Second Line Address"
-                  className="placeholder: block w-[250px] rounded-md border-0 py-1.5 pl-2 pr-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
-
-              <div>
-                <label>Country</label>
-                <br />
-                <input
-                  placeholder="Country"
-                  className="placeholder: block w-[250px] rounded-md border-0 py-1.5 pl-2 pr-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
-              <div>
-                <label>State</label>
-                <br />
-                <input
-                  placeholder="State"
-                  type="tel"
                   className="placeholder: block w-[250px] rounded-md border-0 py-1.5 pl-2 pr-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -144,34 +146,34 @@ const TotalUsers = () => {
               </div>
 
               <div>
-                <label>Kyc</label>
+                <label>Country</label>
                 <br />
                 <input
-                  placeholder="Kyc"
+                  placeholder="Country"
                   className="placeholder: block w-[250px] rounded-md border-0 py-1.5 pl-2 pr-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
               <div>
-                <label> Adaahar card No.</label>
+                <label> State</label>
                 <br />
                 <input
-                  placeholder="Adaahar card No."
+                  placeholder="State"
                   className="placeholder: block w-[250px] rounded-md border-0 py-1.5 pl-2 pr-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
               <div>
-                <label> Adaahar card No.</label>
+                <label> Home/ Flat /Block No.</label>
                 <br />
                 <input
-                  placeholder="Adaahar card No."
+                  placeholder="Block No."
                   className="placeholder: block w-[250px] rounded-md border-0 py-1.5 pl-2 pr-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
               <div>
-                <label> Adaahar card No.</label>
+                <label> Landmark / Society Name</label>
                 <br />
                 <input
-                  placeholder="Adaahar card No."
+                  placeholder="Your Landmark"
                   className="placeholder: block w-[250px] rounded-md border-0 py-1.5 pl-2 pr-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -180,13 +182,16 @@ const TotalUsers = () => {
             <div className="mt-5">
               <span className="m-10">Save As</span>
               <div className="flex gap-5 ml-5">
-                <button className="text-[#0B50B3] p-2 pl-5 pr-5 rounded bg-white border border-[#0B50B3]">
+                <button className="text-[#0B50B3] p-2 pl-5 pr-5 rounded text-white border-[#0B50B3] bg-[#0B50B3] gap-2 flex justify-center items-center">
+                  <img src={home} alt="" />
                   Home
                 </button>
-                <button className="text-[#0B50B3] p-2 pl-5 pr-5 rounded bg-white border border-[#0B50B3]">
+                <button className="text-[#0B50B3] p-2 pl-5 pr-5 rounded bg-white border border-[#0B50B3] gap-2 flex justify-center items-center">
+                  <img src={work} alt="" />
                   Work
                 </button>
-                <button className="text-[#0B50B3] p-2 pl-5 pr-5 rounded bg-white border border-[#0B50B3]">
+                <button className="text-[#0B50B3] p-2 pl-5 pr-5 rounded bg-white border border-[#0B50B3] gap-2 flex justify-center items-center">
+                  <img src={other} alt="" />
                   Other
                 </button>
               </div>
