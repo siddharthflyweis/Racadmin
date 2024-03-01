@@ -45,7 +45,7 @@ const TotalBooking = () => {
                 <th className="w-[300px] text-center text-[#6D6D6D]">
                   Address
                 </th>
-                <th className=" w-[150px] text-left text-[#6D6D6D]">
+                <th className=" w-[150px] text-center text-[#6D6D6D]">
                   Ordered On
                 </th>
                 <th className="w-[150px] text-center text-[#6D6D6D]">
@@ -98,7 +98,7 @@ const TotalBooking = () => {
                 <th className="w-[300px] text-center text-[#6D6D6D]">
                   Address
                 </th>
-                <th className=" w-[150px] text-left text-[#6D6D6D]">
+                <th className=" w-[150px] text-center text-[#6D6D6D]">
                   Ordered On
                 </th>
                 <th className="w-[150px] text-center text-[#6D6D6D]">

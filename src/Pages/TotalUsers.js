@@ -199,7 +199,7 @@ const TotalUsers = () => {
               <div className="flex justify-center items-center gap-5">
                 <button className="bg-[#0B50B3] p-2 pl-5 pr-5 rounded text-white flex justify-center items-center gap-2">
                   Download Excel List
-                  <img src={download}  alt=""/>
+                  <img src={download} alt="" />
                 </button>
                 <div className="relative mt-2 rounded-md">
                   <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
@@ -247,44 +247,23 @@ const TotalUsers = () => {
                       New
                     </span>
                   </td>
-                  <td className="w-[200px] flex items-center p-4">
+                  <td className="w-[200px] flex items-center">
                     <img src={userprofiles} alt="" />
                     siddharth
                   </td>
-                  <td className="w-[300px] p-4">siddhartharay47@gmail.com</td>
-                  <td className="w-[150px] text-left p-4">299999999</td>
-                  <td className="w-[50px] text-center p-4">29</td>
+                  <td className="w-[300px] text-left">
+                    siddhartharay47@gmail.com
+                  </td>
+                  <td className="w-[150px] text-left ">299999999</td>
+                  <td className="w-[50px] text-center">29</td>
                   <td className="w-[50px] ml-2">
                     <img src={userpro} alt="" />
                   </td>
                   <td className="w-[50px] ">
-                    <img src={deletebtn} alt=""/>
-                  </td>
-                  <td className="w-[50px]">
-                    <img src={editbtn} alt="" />
-                  </td>
-                </tr>
-                <tr className="shadow-lg">
-                  <td className="text-center">
-                    <span className="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
-                      New
-                    </span>
-                  </td>
-                  <td className="w-[200px] flex items-center p-4">
-                    <img src={userprofiles} alt="" />
-                    siddharth
-                  </td>
-                  <td className="w-[300px] p-4">siddhartharay47@gmail.com</td>
-                  <td className="w-[150px] text-left p-4">299999999</td>
-                  <td className="w-[50px] text-center p-4">29</td>
-                  <td className="w-[50px] ml-2">
-                    <img src={userpro} alt="" />
-                  </td>
-                  <td className="w-[50px]">
                     <img src={deletebtn} alt="" />
                   </td>
                   <td className="w-[50px]">
-                    <img src={editbtn} alt=""/>
+                    <img src={editbtn} alt="" />
                   </td>
                 </tr>
               </tbody>

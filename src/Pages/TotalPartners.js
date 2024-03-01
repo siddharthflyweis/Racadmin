@@ -228,8 +228,8 @@ const TotalPartners = () => {
 
             <table className="w-full">
               <thead>
-                <tr>
-                  <th className="py-3 px-6"></th>
+                <tr className="m-[50px]">
+                  <th className="w-[50px]"></th>
                   <th className="text-left text-[#6D6D6D] w-[300px]">
                     Partner name
                   </th>
@@ -239,7 +239,7 @@ const TotalPartners = () => {
                   <th className=" w-[150px] text-left text-[#6D6D6D]">
                     Phone no.
                   </th>
-                  <th className="w-[150px] text-center text-[#6D6D6D]">
+                  <th className="w-[200px] text-center text-[#6D6D6D]">
                     Total Work Done
                   </th>
                   <th className="w-[150px] text-center text-[#6D6D6D]">

@@ -118,7 +118,7 @@ const Banners = () => {
                   />
                 </div>
                 <div>
-                  <label>Url</label>
+                  <label>Url Link</label>
                   <br />
                   <input
                     placeholder="Url"
@@ -226,7 +226,7 @@ const Banners = () => {
                       Title
                     </th>
                     <th className="w-[150px] text-center text-[#6D6D6D]">
-                      Url
+                      Url Link
                     </th>
                     <th className="w-[150px] text-center text-[#6D6D6D]">
                       Banner
