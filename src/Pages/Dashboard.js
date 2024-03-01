@@ -7,28 +7,7 @@ import orders from "../Assests/orders.svg";
 import service from "../Assests/service.svg";
 import reffer from "../Assests/reffer.svg";
 
-// import { getTotalUsers } from "../Utils/apiService";
-// import { useEffect, useState } from "react";
-
 const Dashboard = () => {
-  // const [data, setData] = useState(null);
-
-  // Fetch data when the component mounts
-  // async function fetchData() {
-  //   try {
-  //     const result = await getTotalUsers();
-  //     setData(result)
-  //     console.log(result); // Make sure result is not undefined
-  //   } catch (error) {
-  //     console.error("Error fetching data:", error);
-  //   }
-  // }
-
-  // useEffect block
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
-
   return (
     <>
       <div className="shadow-2xl p-10 rounded">
