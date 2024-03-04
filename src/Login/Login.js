@@ -5,8 +5,8 @@ import termandcon from "../Assests/termandcondition.svg";
 import google from "../Assests/google.svg";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
 import { Eye, EyeOff } from "lucide-react";
+import { Baseurl } from "../Utils/apiService";
 
 const Login = () => {
   const [loginuserName, setLoginUserName] = useState("");
@@ -20,7 +20,7 @@ const Login = () => {
   const loginUser = (e) => {
     e.preventDefault();
     axios
-      .post("https://rac-backend.vercel.app/api/v1/admin/login", {
+      .post(`${Baseurl}/api/v1/admin/login`, {
         email: loginuserName,
         password: Loginpassword,
       })
@@ -44,7 +44,7 @@ const Login = () => {
   return (
     <div className="flex">
       <div className="bg-gradient-to-t from-[#75D1A4] to-[#0A4FB3] w-5/12 h-[100vh] flex flex-col justify-around">
-        <div className="grid place-items-center mt-9 ">
+        <div className="grid place-items-center">
           <img src={loginimage} style={{ width: "400px" }} alt="" />
         </div>
         <div className="grid place-items-center">

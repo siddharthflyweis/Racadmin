@@ -1,10 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
+import { Baseurl } from "../Utils/apiService";
+import axios from "axios";
 
 const TotalRefer = () => {
   const [Visible, setVisible] = useState(false);
   const [generatecoupon, setGeneratecoupon] = useState(false);
+  const [data, setData] = useState([]);
 
+  function fetchCoupon() {
+    axios
+      .get(`${Baseurl}/api/v1/coupenn`)
+      .then((response) => {
+        setData(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }
+
+  useEffect(() => {
+    fetchCoupon();
+  }, []);
   return (
     <>
       {generatecoupon ? (
@@ -236,15 +254,19 @@ const TotalRefer = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr className="">
-                      <td className="text-center p-5">#RAC-039292</td>
-                      <td className=" text-center">Lorem impum</td>
-                      <td className=" text-center">Lorem impum</td>
-                      <td className="text-center">30 Rac Points</td>
-                      <td className="text-center">2nd Feb 2023</td>
+                    {data?.data?.map((coupon) => (
+                      <tr key={coupon._Id}>
+                        <td className="text-center p-5">{coupon._id}</td>
+                        <td className=" text-center">Lorem impum</td>
+                        <td className=" text-center">Lorem impum</td>
+                        <td className="text-center">{coupon.price}</td>
+                        <td className="text-center">2nd Feb 2023</td>
 
-                      <td className="text-center text-[#094DB3]">Received</td>
-                    </tr>
+                        <td className="text-center text-[#094DB3]">
+                          {coupon.expiration}
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </>

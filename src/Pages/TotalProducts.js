@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 import home from "../Assests/Allservices/home.svg";
 import btn from "../Assests/deletebtn.svg";
@@ -7,9 +7,27 @@ import truck from "../Assests/truck.svg";
 import warranty from "../Assests/warranty.svg";
 import replacement from "../Assests/replacement.svg";
 import rac from "../Assests/rac.svg";
+import axios from "axios";
+import { Baseurl } from "../Utils/apiService";
 const TotalProducts = () => {
   const [Visible, setVisible] = useState(false);
   const [addProduct, setAddproduct] = useState(false);
+  const [data, setData] = useState([]);
+
+  function fetchAllproduct() {
+    axios
+      .get(`${Baseurl}/api/v1/cartAndOrder/api/v1/order/allOrders`)
+      .then((response) => {
+        setData(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }
+  useEffect(() => {
+    fetchAllproduct();
+  }, []);
   return (
     <>
       {addProduct ? (
@@ -298,17 +316,21 @@ const TotalProducts = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr className="bg-[#F5F9FF]">
-                      <td className="text-center p-5">LG AIR Conditioner</td>
-                      <td className=" text-center">LG</td>
-                      <td className="text-center">lerem iprum</td>
-                      <td className=" text-center">lerem iprum</td>
-                      <td className=" text-center">45</td>
-                      <td className="text-center">Rs.65000</td>
-                      <td className=" text-center text-[#094DB3]">
-                        Rs.65000
-                      </td>
-                    </tr>
+                    {data?.data?.map((products)=>(
+                          <tr className="bg-[#F5F9FF]" key={products._id}>
+                          <td className="text-center p-5">{products.orderId}</td>
+                          <td className=" text-center">LG</td>
+                          <td className="text-center">lerem iprum</td>
+                          <td className=" text-center">lerem iprum</td>
+                          <td className=" text-center">45</td>
+                          <td className="text-center">Rs.65000</td>
+                          <td className=" text-center text-[#094DB3]">
+                            Rs.65000
+                          </td>
+                        </tr>
+
+                    ))}
+                
                   </tbody>
                 </table>
               </>

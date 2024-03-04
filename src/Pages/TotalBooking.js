@@ -1,9 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { Baseurl } from "../Utils/apiService";
 
 import { FaSearch } from "react-icons/fa";
 
 const TotalBooking = () => {
   const [Visible, setVisible] = useState(false);
+  const [data, setData] = useState([]);
+
+  function fetchBooking() {
+    axios
+      .get(`${Baseurl}/api/v1/cartAndOrder/api/v1/order/allOrders`)
+      .then((response) => {
+        setData(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }
+  useEffect(() => {
+    fetchBooking();
+  }, []);
   return (
     <div className="shadow-2xl rounded">
       <div className="flex justify-between items-center pt-5 ml-10 mr-10">
@@ -29,8 +47,22 @@ const TotalBooking = () => {
       </div>
       <hr />
       <div className="flex gap-4 mt-5 mb-5 ml-10">
-        <span onClick={() => setVisible(false)} className={`cursor-pointer ${!Visible && 'underline text-[#165DB2] underline-offset-8'}`}>Service Order</span>
-        <span onClick={() => setVisible(true)}  className={`cursor-pointer ${Visible && 'underline text-[#165DB2] underline-offset-8'}`}>Shopping Order</span>
+        <span
+          onClick={() => setVisible(false)}
+          className={`cursor-pointer ${
+            !Visible && "underline text-[#165DB2] underline-offset-8"
+          }`}
+        >
+          Service Order
+        </span>
+        <span
+          onClick={() => setVisible(true)}
+          className={`cursor-pointer ${
+            Visible && "underline text-[#165DB2] underline-offset-8"
+          }`}
+        >
+          Shopping Order
+        </span>
       </div>
       <hr />
       {Visible ? (
@@ -87,7 +119,6 @@ const TotalBooking = () => {
         </>
       ) : (
         <>
-     
           <table className="w-full">
             <thead>
               <tr>
@@ -112,29 +143,31 @@ const TotalBooking = () => {
               </tr>
             </thead>
             <tbody>
-              <tr className="bg-[#F5F9FF]">
-                <td className="text-center">#RAC-039292</td>
-                <td className="w-[200px] text-center">AC Repair Service</td>
-                <td className="w-[200px] text-center">
-                  45, Noida Sector <br />
-                  55, Noida, UP
-                </td>
-                <td className="w-[150px] text-center">
-                  2nd Feb 2023
-                  <br />
-                  <span className="text-[#094DB3]">10:30 am</span>
-                </td>
-                <td className="w-[50px] text-center">
-                  2nd Feb 2023
-                  <br />
-                  <span className="text-[#094DB3]">10:30 am</span>
-                </td>
-                <td className="w-[50px] text-center">Rs.650</td>
-                <td className="w-[50px] text-center">Loreum Ipsum</td>
-                <td className="w-[50px] text-center text-[#094DB3]">
-                  Confirmed
-                </td>
-              </tr>
+              {data?.data?.map((booking) => (
+                <tr className="bg-[#F5F9FF]" key={booking._id}>
+                  <td className="text-center">{booking.orderId}</td>
+                  <td className="w-[200px] text-center">AC Repair Service</td>
+                  <td className="w-[200px] text-center">
+                    45, Noida Sector <br />
+                    55, Noida, UP
+                  </td>
+                  <td className="w-[150px] text-center">
+                    2nd Feb 2023
+                    <br />
+                    <span className="text-[#094DB3]">10:30 am</span>
+                  </td>
+                  <td className="w-[50px] text-center">
+                    2nd Feb 2023
+                    <br />
+                    <span className="text-[#094DB3]">10:30 am</span>
+                  </td>
+                  <td className="w-[50px] text-center">Rs.650</td>
+                  <td className="w-[50px] text-center">Loreum Ipsum</td>
+                  <td className="w-[50px] text-center text-[#094DB3]">
+                    Confirmed
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </>

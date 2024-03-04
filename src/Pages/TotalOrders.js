@@ -5,16 +5,10 @@ import { Baseurl } from "../Utils/apiService";
 const TotalOrders = () => {
   const [Visible, setVisible] = useState(false);
   const [data, setData] = useState([]);
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzNkNDg4Y2M1NWNjN2I5ZWY4ZDVmYiIsImlhdCI6MTcwOTIxMjc1NSwiZXhwIjoxNzA5NDcxOTU1fQ.IdBuysqP_L_agOyWWom2PYzSyO5ZgJmFuO_crZhymYk";
 
   function fetchOrders() {
     axios
-      .get(`${Baseurl}/api/v1/cartAndOrder/api/v1/order/Orders`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      .get(`${Baseurl}/api/v1/cartAndOrder/api/v1/order/allOrders`)
       .then((response) => {
         setData(response.data);
         console.log(response.data);
@@ -150,10 +144,10 @@ const TotalOrders = () => {
               </tr>
             </thead>
             <tbody>
-              {data?.data?.map((order) => {
+              {data?.data?.map((order) => (
                 <tr className="bg-[#F5F9FF]" key={order._id}>
-                  <td className="text-center">{order.categoryId}</td>
-                  <td className="w-[200px] text-center">AC Repair Service</td>
+                  <td className="text-center">{order.orderId}</td>
+                  <td className="w-[200px] text-center">{order.orderType}</td>
                   <td className="w-[200px] text-center">
                     45, Noida Sector <br />
                     55, Noida, UP
@@ -171,10 +165,10 @@ const TotalOrders = () => {
                   <td className="w-[50px] text-center">Rs.650</td>
                   <td className="w-[50px] text-center">Loreum Ipsum</td>
                   <td className="w-[50px] text-center text-[#094DB3]">
-                    Confirmed
+                    {order.orderStatus}
                   </td>
-                </tr>;
-              })}
+                </tr>
+              ))}
             </tbody>
           </table>
         </>

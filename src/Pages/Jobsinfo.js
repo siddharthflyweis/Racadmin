@@ -1,6 +1,24 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
+import { Baseurl } from "../Utils/apiService";
+import axios from "axios";
 const Jobsinfo = () => {
+  const [data, setData] = useState([]);
+
+  function fetchjob() {
+    axios
+      .get(`${Baseurl}/api/v1/admin/endJob`)
+      .then((response) => {
+        setData(response.data);
+        // console.log(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }
+  useEffect(() => {
+    fetchjob();
+  }, []);
   return (
     <div className="shadow-2xl rounded h-[600px]">
       <div className="flex  justify-between items-center pt-5 ml-10 mr-10">
@@ -48,17 +66,19 @@ const Jobsinfo = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className="bg-[#F5F9FF]">
-              <td className="text-center p-3">#RAC-039292</td>
-              <td className="text-center p-3">Loreum Ipsum</td>
-              <td className="text-center p-3">Loreum Ipsum</td>
-              <td className="text-center p-3">Rs. 500</td>
-              <td className="text-center p-3">2nd Feb 2023</td>
-              <td className="text-center p-3">2</td>
-              <td className="text-center p-3">3</td>
-              <td className="text-center p-3 text-[#094DB3]">4pm-6pm</td>
-              <td className="text-center p-3 text-[#09B31A]">Done</td>
-            </tr>
+            {data?.data?.map((job) => (
+              <tr className="bg-[#F5F9FF]" key={job._id}>
+                <td className="text-center p-3">{job._id}</td>
+                <td className="text-center p-3">{job.name}</td>
+                <td className="text-center p-3">Loreum Ipsum</td>
+                <td className="text-center p-3">Rs.{job.price}</td>
+                <td className="text-center p-3">2nd Feb 2023</td>
+                <td className="text-center p-3">2</td>
+                <td className="text-center p-3">3</td>
+                <td className="text-center p-3 text-[#094DB3]">4pm-6pm</td>
+                <td className="text-center p-3 text-[#09B31A]">done</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

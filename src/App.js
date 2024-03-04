@@ -1,5 +1,4 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
 import Dashboard from "./Pages/Dashboard";
 import TotalUsers from "./Pages/TotalUsers";
 import TotalPartners from "./Pages/TotalPartners";
