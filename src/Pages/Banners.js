@@ -232,7 +232,7 @@ const Banners = () => {
                 <tbody className="mt-4">
                   {data?.Data?.map((item) => (
                     <tr key={item._id} className="border-t-2 border-b-2 m-5">
-                      <td className="w-[100px] text-center p-4">
+                      <td className="w-[100px] h-[100px] text-center p-4">
                         <img src={item.image} alt="" />
                       </td>
                       <td className="w-[100px]  text-center p-4">
