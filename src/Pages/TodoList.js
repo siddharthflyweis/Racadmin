@@ -1,8 +1,31 @@
-import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import userprofiles from "../Assests/userprofiles.svg";
+import { useEffect, useState } from "react";
+import { Baseurl } from "../Utils/apiService";
+import axios from "axios";
 const TodoList = () => {
   const [addlist, setAddlist] = useState(false);
+  const [data, setData] = useState([]);
+  const headers = {
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTU3YjczYzM1ODFlY2E4NzMzMDYwMiIsImlhdCI6MTcwOTUzOTc4MCwiZXhwIjoxNzA5Nzk4OTgwfQ.1fvZQ7LMG30nliLFWHQlCAOXSXvf0aPpKhcuhDE5DZs",
+    "Content-Type": "application/json",
+  };
+  function fetchPermissions() {
+    axios
+      .get(`${Baseurl}/api/v1/admin/todo`, { headers: headers })
+      .then((response) => {
+        setData(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }
+  useEffect(() => {
+    fetchPermissions();
+  }, []);
+
   return (
     <>
       {addlist ? (
@@ -104,27 +127,26 @@ const TodoList = () => {
               </div>
             </div>
             <hr />
-            <div className="flex justify-between  items-center m-5 h-[70px]">
-              <div className="flex gap-2">
-                <img src={userprofiles} alt="" />
-                <div>
-                  <span>John Doe 12:33 pm. 13 Nov, 2023</span>
-                  <div className="w-[650px] mt-1">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Maecenas vulputate turpis elit, quis pellentesque ante
-                    bibendum nec.
+            {data?.data?.map((item) => (
+              <div className="flex justify-between  items-center m-5 h-[70px]">
+                <div className="flex gap-2">
+                  <img src={userprofiles} alt="" />
+                  <div>
+                    <span>John Doe {item.createdAt}</span>
+                    <div className="w-[650px] mt-1">{item.description}</div>
                   </div>
                 </div>
+                <div className="flex gap-2">
+                  <button className="bg-[#0B50B3] p-2 pl-5 pr-5 rounded-3xl text-white">
+                    Done
+                  </button>
+                  <button className="text-[#0B50B3] p-2 pl-5 pr-5 rounded-3xl bg-white border border-[#0B50B3]">
+                    Remind me Later
+                  </button>
+                </div>
               </div>
-              <div className="flex gap-2">
-                <button className="bg-[#0B50B3] p-2 pl-5 pr-5 rounded-3xl text-white">
-                  Done
-                </button>
-                <button className="text-[#0B50B3] p-2 pl-5 pr-5 rounded-3xl bg-white border border-[#0B50B3]">
-                  Remind me Later
-                </button>
-              </div>
-            </div>{" "}
+            ))}
+
             <hr />
           </div>
         </>

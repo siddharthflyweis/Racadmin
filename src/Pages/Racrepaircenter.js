@@ -2,10 +2,28 @@ import userprofiles from "../Assests/userprofiles.svg";
 import deletebtn from "../Assests/deletebtn.svg";
 import editbtn from "../Assests/editbtn.svg";
 import dwld from "../Assests/dwnld.svg";
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
+import { Baseurl } from "../Utils/apiService";
+import axios from "axios";
 const Racrepaircenter = () => {
   const [addShop, setAddshop] = useState(false);
+  const [data, setData] = useState([]);
+
+  function fetchRacrepaircenter() {
+    axios
+      .get(`${Baseurl}/api/v1/service`)
+      .then((response) => {
+        setData(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }
+  useEffect(() => {
+    fetchRacrepaircenter();
+  }, []);
+
   return (
     <>
       {addShop ? (
@@ -184,7 +202,7 @@ const Racrepaircenter = () => {
       ) : (
         <>
           {" "}
-          <div className="shadow-2xl rounded h-[600px]">
+          <div className="shadow-2xl rounded h-[700px]">
             <div className="flex  justify-between items-center pt-5 ml-10 mr-10">
               <div className="text-2xl mb-5 text-black font-semibold">
                 Rac Repair Center
@@ -225,31 +243,32 @@ const Racrepaircenter = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="shadow-lg">
-                    <td className="text-center p-2">
-                      <span className="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
-                        New
-                      </span>
-                    </td>
-                    <td className="w-[200px] flex items-center p-2">
-                      <img src={userprofiles} alt="" />
-                      siddharth
-                    </td>
-                    <td className="w-[300px] p-2">AC Repair,ELECTRICIAN</td>
-                    <td className="w-[150px] text-left p-2">299999999</td>
-                    <td className="w-[50px] text-center p-2">29</td>
+                  {data?.msg?.map((item) => (
+                    <tr className="">
+                      <td className="text-center p-2">
+                        <span className="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
+                          New
+                        </span>
+                      </td>
+                      <td className="w-[200px] flex items-center p-2">
+                        <img src={userprofiles} alt="" />
+                        siddharth
+                      </td>
+                      <td className="w-[300px] p-2">{item.name}</td>
+                      <td className="w-[150px] text-left p-2">299999999</td>
+                      <td className="w-[50px] text-center p-2">29</td>
 
-                    <td className="w-[50px]">
-                      <img src={dwld} alt="" />
-                    </td>
-                    <td className="w-[50px]">
-                      <img src={deletebtn} alt="" />
-                    </td>
-                    <td className="w-[50px]">
-                      <img src={editbtn} alt="" />
-                    </td>
-                  </tr>
-                  
+                      <td className="w-[50px]">
+                        <img src={dwld} alt="" />
+                      </td>
+                      <td className="w-[50px]">
+                        <img src={deletebtn} alt="" />
+                      </td>
+                      <td className="w-[50px]">
+                        <img src={editbtn} alt="" />
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>

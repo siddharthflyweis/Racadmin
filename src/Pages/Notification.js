@@ -4,9 +4,33 @@ import deletebtn from "../Assests/deletebtn.svg";
 import editbtn from "../Assests/editbtn.svg";
 import bell from "../Assests/bell.svg";
 import editicon from "../Assests/editicon.svg";
+import { useEffect, useState } from "react";
+import { Baseurl } from "../Utils/apiService";
+import axios from "axios";
 const Natofication = () => {
+  const [data, setData] = useState([]);
+  const headers = {
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTU3YjczYzM1ODFlY2E4NzMzMDYwMiIsImlhdCI6MTcwOTUzOTc4MCwiZXhwIjoxNzA5Nzk4OTgwfQ.1fvZQ7LMG30nliLFWHQlCAOXSXvf0aPpKhcuhDE5DZs",
+    "Content-Type": "application/json",
+  };
+
+  function fetchNotification() {
+    axios
+      .get(`${Baseurl}/api/v1/admin/notifications`, { headers: headers })
+      .then((response) => {
+        setData(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }
+  useEffect(() => {
+    fetchNotification();
+  }, []);
   return (
-    <div className="shadow-2xl rounded h-[600px]">
+    <div className="shadow-2xl rounded ">
       <div className="flex justify-between items-center pt-5 ml-10 mr-10">
         <div className="text-2xl mb-5 text-[black] font-semibold">
           Notification Manager
@@ -30,7 +54,7 @@ const Natofication = () => {
           </div>
 
           <div className="flex">
-            <img src={deletebtn} alt=""/>
+            <img src={deletebtn} alt="" />
             <img src={editbtn} alt="" />
           </div>
         </div>
@@ -133,22 +157,32 @@ const Natofication = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className="">
-              <td className="text-center p-5 border border-slate-300 ...">
-                <input type="checkbox" />
-              </td>
-              <td className="w-[200px] text-center border border-slate-300 ..."></td>
-              <td className="w-[200px] text-center border border-slate-300 ..."></td>
+            {data?.data?.map((item) => (
+              <tr className="" key={item._id}>
+                <td className="text-center p-5 border border-slate-300 ...">
+                  <input type="checkbox" />
+                </td>
+                <td className="w-[200px] text-center border border-slate-300 ...">
+                  {item.title}
+                </td>
+                <td className="w-[200px] text-center border border-slate-300 ...">
+                  {item.content}
+                </td>
 
-              <td className="w-[50px] text-center border border-slate-300 ..."></td>
+                <td className="w-[50px] text-center border border-slate-300 ...">
+                  {item.status}
+                </td>
 
-              <td className="w-[50px] text-center border border-slate-300 ..."></td>
-              <td className="w-[50px] text-center border border-slate-300 ...">
-                <span className="flex gap-1 justify-center">
-                  <img src={bell} alt=""/> <img src={editicon} alt=""/>
-                </span>
-              </td>
-            </tr>
+                <td className="w-[50px] text-center border border-slate-300 ...">
+                  {item.createdAt}
+                </td>
+                <td className="w-[50px] text-center border border-slate-300 ...">
+                  <span className="flex gap-1 justify-center">
+                    <img src={bell} alt="" /> <img src={editicon} alt="" />
+                  </span>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

@@ -1,4 +1,3 @@
-import React from "react";
 import { FaSearch } from "react-icons/fa";
 import download from "../Assests/download.svg";
 import userprofiles from "../Assests/userprofiles.svg";
@@ -6,11 +5,14 @@ import userpro from "../Assests/userpro.svg";
 import deletebtn from "../Assests/deletebtn.svg";
 import editbtn from "../Assests/editbtn.svg";
 import dwld from "../Assests/dwnld.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Baseurl } from "../Utils/apiService";
+import axios from "axios";
 import useprofile from "../Assests/userprofiles.svg";
 const TotalPartners = () => {
   const [Visible, setVisible] = useState(false);
   const [count, setCount] = useState(0);
+  const [data, setData] = useState([]);
 
   const increment = () => {
     setCount(count + 1);
@@ -21,6 +23,27 @@ const TotalPartners = () => {
       setCount(count - 1);
     }
   };
+
+  const headers = {
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTU3YjczYzM1ODFlY2E4NzMzMDYwMiIsImlhdCI6MTcwOTUzOTc4MCwiZXhwIjoxNzA5Nzk4OTgwfQ.1fvZQ7LMG30nliLFWHQlCAOXSXvf0aPpKhcuhDE5DZs",
+    "Content-Type": "application/json",
+  };
+
+  function fetchTotalpartner() {
+    axios
+      .get(`${Baseurl}/api/v1/service`, { headers: headers })
+      .then((response) => {
+        setData(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }
+  useEffect(() => {
+    fetchTotalpartner();
+  }, []);
   return (
     <>
       {Visible ? (
@@ -281,27 +304,29 @@ const TotalPartners = () => {
               </thead>
 
               <tbody>
-                <tr>
-                  <td className="text-center p-3">
-                    <span className="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
-                      New
-                    </span>
-                  </td>
-                  <td className=" flex items-center">
-                    <img src={userprofiles} alt="" />
-                    siddharth
-                  </td>
-                  <td className=" p-3">AC Repair,ELECTRICIAN</td>
-                  <td className="text-left p-3">299999999</td>
-                  <td className="text-center p-3">29</td>
-                  <td className="text-center p-3">29</td>
-                  <td className="flex gap-1 p-3">
-                    <img src={userpro} alt="" />
-                    <img src={dwld} alt="" />
-                    <img src={deletebtn} alt="" />
-                    <img src={editbtn} alt="" />
-                  </td>
-                </tr>
+                {data?.msg?.map((item) => (
+                  <tr key={item._id}>
+                    <td className="text-center p-3">
+                      <span className="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
+                        New
+                      </span>
+                    </td>
+                    <td className=" flex items-center">
+                      <img src={userprofiles} alt="" />
+                      siddharth
+                    </td>
+                    <td className=" p-3">{item.name}</td>
+                    <td className="text-left p-3">299999999</td>
+                    <td className="text-center p-3">{item.price}</td>
+                    <td className="text-center p-3">29</td>
+                    <td className="flex gap-1 p-3">
+                      <img src={userpro} alt="" />
+                      <img src={dwld} alt="" />
+                      <img src={deletebtn} alt="" />
+                      <img src={editbtn} alt="" />
+                    </td>
+                  </tr>
+                ))}
               </tbody>
               <hr />
             </table>

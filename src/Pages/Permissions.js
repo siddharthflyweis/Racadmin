@@ -1,12 +1,37 @@
-import React from "react";
 import { FaSearch } from "react-icons/fa";
 import permissionaction from "../Assests/permissionaction.svg";
 import userprofiles from "../Assests/userprofiles.svg";
+import { useEffect, useState } from "react";
+import { Baseurl } from "../Utils/apiService";
+import axios from "axios";
 const Permissions = () => {
+  const [data, setData] = useState([]);
+  const headers = {
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTU3YjczYzM1ODFlY2E4NzMzMDYwMiIsImlhdCI6MTcwOTUzOTc4MCwiZXhwIjoxNzA5Nzk4OTgwfQ.1fvZQ7LMG30nliLFWHQlCAOXSXvf0aPpKhcuhDE5DZs",
+    "Content-Type": "application/json",
+  };
+
+  function fetchPermissions() {
+    axios
+      .get(`${Baseurl}/api/v1/admin/permissions`, { headers: headers })
+      .then((response) => {
+        setData(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }
+  useEffect(() => {
+    fetchPermissions();
+  }, []);
   return (
     <div className="shadow-2xl rounded h-[600px]">
       <div className="flex  justify-between items-center pt-5 ml-10 mr-10">
-        <div className="text-2xl font-semibold mb-5 text-[black]">Rolls & Permissions</div>
+        <div className="text-2xl font-semibold mb-5 text-[black]">
+          Rolls & Permissions
+        </div>
 
         <div className="relative mt-2 rounded-md">
           <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
@@ -42,28 +67,32 @@ const Permissions = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className="">
-              <td className="text-center border border-slate-300 ... bg-[#F6F9FF] flex items-center">
-                <img src={userprofiles} alt="" />
-                <span>
-                  <div className="text-xl">siddharth</div>
-                  <span className="text-[#165DB2]">Real Estate</span>
-                </span>
-              </td>
-              <td className=" text-center border border-slate-300 ... bg-[#F6F9FF]">
-                Hindi, Gujrati
-              </td>
-              <td className="text-center border border-slate-300 ... bg-[#F6F9FF]">
-                Legal advisor
-              </td>
+            {data?.data?.map((item) => (
+              <tr className="" key={item._id}>
+                <td className="text-center border border-slate-300 ... bg-[#F6F9FF] flex items-center">
+                  <img src={userprofiles} alt="" />
+                  <span>
+                    <div className="text-xl">{item.name}</div>
+                    <span className="text-[#165DB2]">Real Estate</span>
+                  </span>
+                </td>
+                <td className=" text-center border border-slate-300 ... bg-[#F6F9FF]">
+                  Hindi, Gujrati
+                </td>
+                <td className="text-center border border-slate-300 ... bg-[#F6F9FF]">
+                  {item.description}
+                </td>
 
-              <td className=" text-center border border-slate-300 ... bg-[#F6F9FF]">
-                <span className="flex gap-2">
-                  <img src={permissionaction} alt=""/> <img src={permissionaction} alt=""/>
-                  <img src={permissionaction} alt=""/> <img src={permissionaction} alt=""/>
-                </span>
-              </td>
-            </tr>
+                <td className=" text-center border border-slate-300 ... bg-[#F6F9FF]">
+                  <span className="flex gap-2">
+                    <img src={permissionaction} alt="" />{" "}
+                    <img src={permissionaction} alt="" />
+                    <img src={permissionaction} alt="" />{" "}
+                    <img src={permissionaction} alt="" />
+                  </span>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

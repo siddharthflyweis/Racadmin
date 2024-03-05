@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 import download from "../Assests/download.svg";
 import userprofiles from "../Assests/userprofiles.svg";
@@ -11,9 +11,13 @@ import home from "../Assests/Home.svg";
 import work from "../Assests/work.svg";
 import other from "../Assests/other.svg";
 
+import { Baseurl } from "../Utils/apiService";
+import axios from "axios";
+
 const TotalUsers = () => {
   const [adduser, setAdduser] = useState(false);
   const [count, setCount] = useState(0);
+  const [data, setData] = useState([]);
 
   const increment = () => {
     setCount(count + 1);
@@ -24,6 +28,26 @@ const TotalUsers = () => {
       setCount(count - 1);
     }
   };
+
+  const headers = {
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTU3YjczYzM1ODFlY2E4NzMzMDYwMiIsImlhdCI6MTcwOTUzOTc4MCwiZXhwIjoxNzA5Nzk4OTgwfQ.1fvZQ7LMG30nliLFWHQlCAOXSXvf0aPpKhcuhDE5DZs",
+    "Content-Type": "application/json",
+  };
+  function fetchTotalusers() {
+    axios
+      .get(`${Baseurl}/api/v1/admin/alluser`, { headers: headers })
+      .then((response) => {
+        setData(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }
+  useEffect(() => {
+    fetchTotalusers();
+  }, []);
   return (
     <>
       {adduser ? (
@@ -292,29 +316,31 @@ const TotalUsers = () => {
                 </tr>
               </thead>
               <tbody className="mt-4">
-                <tr className="shadow-lg">
-                  <td className="text-center p-3">
-                    <span className="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
-                      New
-                    </span>
-                  </td>
-                  <td className="flex items-center p-3">
-                    <img src={userprofiles} alt="" />
-                    siddharth
-                  </td>
-                  <td className=" text-left p-3">siddhartharay47@gmail.com</td>
-                  <td className=" text-left p-3">299999999</td>
-                  <td className=" text-center p-3">29</td>
-                  <td className="p-3">
-                    <img src={userpro} alt="" />
-                  </td>
-                  <td className=" ">
-                    <img src={deletebtn} alt="" />
-                  </td>
-                  <td className="">
-                    <img src={editbtn} alt="" />
-                  </td>
-                </tr>
+                {data?.data?.map((item) => (
+                  <tr className="" key={item._id}>
+                    <td className="text-center p-3">
+                      <span className="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
+                        New
+                      </span>
+                    </td>
+                    <td className="flex items-center p-3">
+                      <img src={userprofiles} alt="" />
+                      {item.fullName}
+                    </td>
+                    <td className=" text-left p-3">{item.email}</td>
+                    <td className=" text-left p-3">{item.phone}</td>
+                    <td className=" text-center p-3">29</td>
+                    <td className="p-3">
+                      <img src={userpro} alt="" />
+                    </td>
+                    <td className=" ">
+                      <img src={deletebtn} alt="" />
+                    </td>
+                    <td className="">
+                      <img src={editbtn} alt="" />
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
