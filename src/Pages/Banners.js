@@ -12,6 +12,12 @@ const Banners = () => {
   const [addbanner, setAddbanner] = useState(false);
   const [data, setData] = useState([]);
 
+  const [bannertitle, setBannerTitle] = useState();
+  const [url, setUrl] = useState();
+  const [bannercontent, setbannercontent] = useState();
+  const [date, setDate] = useState();
+  const [image, setimage] = useState("");
+
   function fetchbanner() {
     axios
       .get(`${Baseurl}/api/v1/images`)
@@ -28,21 +34,21 @@ const Banners = () => {
     fetchbanner();
   }, []);
 
-  const [inputdata, setInputdata] = useState({
-    title: "",
-    date: "",
-    url: "",
-    image: "",
-    Content: "",
-  });
-
   const navigate = useNavigate();
   function handlesubmit(event) {
     event.preventDefault();
+
+    const formData = new FormData();
+    formData.append("e_bannertitle", bannertitle);
+    formData.append("e_url", url);
+    formData.append("e_bannercontent", bannercontent);
+    formData.append("e_date", date);
+    formData.append("e_image", image);
     axios
-      .post(`${Baseurl}/api/v1/images`, inputdata)
+      .post(`${Baseurl}/api/v1/images`, { Body: formData })
       .then((res) => {
         alert("data added successfully");
+        window.location.reload();
         navigate("/Banners");
       })
       .catch((e) => {
@@ -97,33 +103,30 @@ const Banners = () => {
                   <label>Banner Title</label>
                   <br />
                   <input
+                    value={bannertitle}
                     placeholder="Banner Title"
                     className="placeholder: block w-[300px] rounded-md border-0 py-1.5 pl-2 pr-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    onChange={(e) =>
-                      setInputdata({ ...inputdata, title: e.target.value })
-                    }
+                    onChange={(e) => setBannerTitle(e.target.value)}
                   />
                 </div>
                 <div>
                   <label>Date Added</label>
                   <br />
                   <input
+                    value={date}
                     type="date"
                     className="placeholder: block w-[150px] rounded-md border-0 py-1.5 pl-2 pr-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    onChange={(e) =>
-                      setInputdata({ ...inputdata, date: e.target.value })
-                    }
+                    onChange={(e) => setDate(e.target.value)}
                   />
                 </div>
                 <div>
                   <label>Url Link</label>
                   <br />
                   <input
+                    value={url}
                     placeholder="Url"
                     className="placeholder: block w-[300px] rounded-md border-0 py-1.5 pl-2 pr-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    onChange={(e) =>
-                      setInputdata({ ...inputdata, url: e.target.value })
-                    }
+                    onChange={(e) => setUrl(e.target.value)}
                   />
                 </div>
               </div>
@@ -131,10 +134,9 @@ const Banners = () => {
                 <label>Banner Content</label>
                 <br />
                 <input
+                  value={bannercontent}
                   className="placeholder: block w-full rounded-md border-0 py-1.5 pl-2 pr-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  onChange={(e) =>
-                    setInputdata({ ...inputdata, Content: e.target.value })
-                  }
+                  onChange={(e) => setbannercontent(e.target.value)}
                 />
               </div>
               <div className="m-10">
@@ -148,12 +150,7 @@ const Banners = () => {
                           className="text-sm cursor-pointer w-36 hidden"
                           type="file"
                           multiple
-                          onChange={(e) =>
-                            setInputdata({
-                              ...inputdata,
-                              image: e.target.files[0],
-                            })
-                          }
+                          onChange={(e) => setimage(e.target.files[0])}
                         />
                         <div className="flex justify-center">
                           <img src={upload} alt="" className="w-[50px]" />
@@ -167,6 +164,7 @@ const Banners = () => {
                   </div>
                 </div>
               </div>
+
               <div className="flex justify-end gap-5 mr-5">
                 <button className="text-[#0B50B3] p-2 pl-5 pr-5 rounded bg-white border border-[#0B50B3]">
                   Cancel
@@ -198,7 +196,7 @@ const Banners = () => {
                   </div>
                   <input
                     type="text"
-                    className="placeholder: ml-2 block w-[350px] rounded-md border-0 py-1.5 pl-10 pr-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="placeholder: ml-2.5 block w-[350px] rounded-md border-0 py-1.5 pl-10 pr-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     placeholder="Search in Service"
                   />
                 </div>
@@ -233,7 +231,7 @@ const Banners = () => {
                 </thead>
                 <tbody className="mt-4">
                   {data?.Data?.map((item) => (
-                    <tr key={item._id}>
+                    <tr key={item._id} className="border-t-2 border-b-2 m-5">
                       <td className="w-[100px] text-center p-4">
                         <img src={item.image} alt="" />
                       </td>

@@ -31,7 +31,7 @@ const Header = () => {
     <div className="bg-[white]  h-[100px]  mt-5 flex flex-col shadow-lg ">
       <div className="flex justify-between items-center mt-7 mr-5">
         <div className="ml-10 flex justify-center items-center gap-2 ">
-          <img  src={userprofile} alt="" />
+          <img src={userprofile} alt="" />
           <span className="font-bold">
             Mr Admin
             <br />
@@ -42,7 +42,7 @@ const Header = () => {
         <div className="flex justify-center items-center gap-10">
           <div className="relative mt-2 rounded-md">
             <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-              <span className="bg-[#165DB2] p-2  rounded-tl rounded-bl text-white">
+              <span className="bg-[#165DB2] p-2.5 ml-[-3px] rounded-tl rounded-bl text-white">
                 <FaSearch />
               </span>
             </div>
